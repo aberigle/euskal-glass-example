@@ -115,6 +115,17 @@ public class MainActivity extends Activity {
             }
         });
 
+        examples.add(new ExampleCase("Test Navigation") {
+            @Override
+            public void onSelected(int selected) {
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(
+                                "google.navigation:ll=43.2904304,-2.988996&title=Euskal%20Encounter&mode=w"));
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
