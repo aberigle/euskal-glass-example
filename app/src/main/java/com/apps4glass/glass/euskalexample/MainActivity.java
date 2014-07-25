@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
 import android.provider.MediaStore;
@@ -103,11 +104,21 @@ public class MainActivity extends Activity {
             }
         });
 
+        examples.add(new ExampleCase("Test Web Browser") {
+            @Override
+            public void onSelected(int selected) {
+                Uri webpage = Uri.parse("http://apps4glass.com");
+                Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        System.out.print("TEST" + requestCode);
         if (resultCode == RESULT_OK)
             examples.get(requestCode).onActivityResult(requestCode, data);
         super.onActivityResult(requestCode, resultCode, data);
