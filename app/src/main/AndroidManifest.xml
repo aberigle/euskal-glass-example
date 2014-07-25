@@ -12,6 +12,12 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name=
+                    "com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+            <meta-data android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/trigger" />
         </activity>
     </application>
 
